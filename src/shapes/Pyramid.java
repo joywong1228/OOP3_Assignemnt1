@@ -12,7 +12,7 @@ public class Pyramid extends Shape
     }
 
     @Override
-    public double height()
+    public double Height()
     {
         return height;
     }
