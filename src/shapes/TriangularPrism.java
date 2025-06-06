@@ -1,16 +1,13 @@
 package shapes;
 
 public class TriangularPrism extends Prism {
-    private double height;
-    private double side;
 
     public TriangularPrism(double height, double side) {
-        this.height = height;
-        this.side = side;
+        super(height, side);
     }
 
     @Override
-    public double height() {
+    public double getHeight() {
         return height;
     }
 

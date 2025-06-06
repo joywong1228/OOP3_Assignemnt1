@@ -1,16 +1,13 @@
 package shapes;
 
 public class SquarePrism extends Prism {
-    private double height;
-    private double side;
 
     public SquarePrism(double height, double side) {
-        this.height = height;
-        this.side = side;
+        super(height, side);
     }
 
     @Override
-    public double height() {
+    public double getHeight() {
         return height;
     }
 
@@ -30,6 +27,6 @@ public class SquarePrism extends Prism {
 
     @Override
     public String toString() {
-        return "SquarePrism " + height + " " + edge;
+        return "SquarePrism " + height + " " + side;
     }
 }
