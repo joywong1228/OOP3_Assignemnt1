@@ -1,15 +1,17 @@
 package shapes;
 
-/**
- * Abstract base class for all 3D shapes.
- */
-public abstract class Shape implements Comparable<Shape> {
+public abstract class Prism extends Shape {
+    public double height;
+    public double side;
+
+    public Prism(double height, double side) {
+        this.height = height;
+        this.side = side;
+    }
 
     public abstract double getHeight();
-
-    public abstract double calBaseArea();
-
     public abstract double calVolume();
+    public abstract double calBaseArea();
 
     @Override
     public int compareTo(Shape other, String criteria) {
