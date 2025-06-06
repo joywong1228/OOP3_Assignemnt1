@@ -12,7 +12,7 @@ public class Cone extends Shape
     }
 
     @Override
-    public double height()
+    public double getHeight()
     {
         return height;
     }
