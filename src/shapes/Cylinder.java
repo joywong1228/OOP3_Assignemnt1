@@ -12,7 +12,7 @@ public class Cylinder extends Shape
     }
 
     @Override
-    public double Height()
+    public double getHeight()
     {
         return height;
     }
