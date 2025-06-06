@@ -2,7 +2,7 @@ package shapes;
 
 public class SquarePrism extends Prism {
     private double height;
-    private double edge;
+    private double side;
 
     public SquarePrism(double height, double side) {
         this.height = height;
@@ -20,7 +20,7 @@ public class SquarePrism extends Prism {
 
     @Override
     public double calBaseArea() {
-        return edge * edge;
+        return side * side;
     }
 
     @Override
