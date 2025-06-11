@@ -76,13 +76,7 @@ public class AppDriver {
 		}
 
 		// implement read file in here
-		Shape[] shapes = BasicFileIO.readFile(filaName);
-
-		if (shapes == null)
-		{
-			System.err.println("The shapes list is null.");
-		}
-
+		Shape[] shapes = null;
 
 		long startTime = System.currentTimeMillis();
 		// translating sorting method
