@@ -20,8 +20,7 @@ public class AppDriver {
 		char sortMethod = '\0';
 
 		// read the execution c
-		 for (String arg : args)
-		{
+		for (String arg : args) {
 			char flag = Character.toLowerCase((arg.charAt(1)));
 			String value = arg.substring(2).replace("\"", "");
 
@@ -59,8 +58,8 @@ public class AppDriver {
 		System.out.println("Compare Type: " + compareType);
 		System.out.println("Sort Method: " + sortMethod);
 
-		// translating compare type into the label 
-		switch(compareType) {
+		// translating compare type into the label
+		switch (compareType) {
 			case 'v':
 				compareTypeLabel = "volume";
 				break;
@@ -128,6 +127,8 @@ public class AppDriver {
 
 	private static void displayOutput(Shape[] shapes) {
 		int length = shapes.length;
+
+		System.out.println("Total shapes: " + length);
 
 		System.out.printf("First element is:    %-25s %s: %.15f\n",
 				shapes[0].getClass().getName(),
