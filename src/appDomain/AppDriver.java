@@ -19,7 +19,8 @@ public class AppDriver {
 		char compareType = '\0';
 		char sortMethod = '\0';
 
-		// read the execution c for (String arg : args)
+		// read the execution c
+		 for (String arg : args)
 		{
 			char flag = Character.toLowerCase((arg.charAt(1)));
 			String value = arg.substring(2).replace("\"", "");
@@ -60,8 +61,8 @@ public class AppDriver {
 
 		// translating compare type into the label 
 		switch(compareType) {
-			
-			comp areTypeLabel = "volume";
+			case 'v':
+				compareTypeLabel = "volume";
 				break;
 			case 'h':
 				compareTypeLabel = "height";
