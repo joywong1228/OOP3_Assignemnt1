@@ -2,7 +2,6 @@ package appDomain;
 
 import shapes.*;
 import utilities.MergeSort;
-import utilities.SelectionSort;
 
 public class AppDriver
 {
@@ -16,21 +15,21 @@ public class AppDriver
 			new Cone(4,2)
 		};
 
-		SelectionSort.sort(shapes, "volume");
+		MergeSort.sort(shapes, "volume");
 
 		System.out.println("Sorted by volume: ");
 		for (Shape shape: shapes) {
 			System.out.println(shape + "\tVolume: \t" + shape.calVolume());
 		}
 
-		SelectionSort.sort(shapes, "height");
+		MergeSort.sort(shapes, "height");
 
 		System.out.println("Sorted by height: ");
 		for (Shape shape: shapes) {
 			System.out.println(shape + "\tHeight: \t" + shape.getHeight());
 		}
 
-		SelectionSort.sort(shapes, "base area");
+		MergeSort.sort(shapes, "base area");
 
 		System.out.println("Sorted by base area: ");
 		for (Shape shape: shapes) {

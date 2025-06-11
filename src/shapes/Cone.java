@@ -5,7 +5,7 @@ public class Cone extends Shape
     private double radius;
     private double height;
 
-    public Cone (double radius, double height)
+    public Cone (double height, double radius)
     {
         this.radius = radius;
         this.height = height;
