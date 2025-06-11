@@ -1,37 +1,106 @@
 package appDomain;
 
 import shapes.*;
+import utilities.BubbleSort;
+import utilities.InsertionSort;
 import utilities.MergeSort;
+import utilities.SelectionSort;
+import utilities.QuickSort;
+import utilities.CycleSort;
 
 public class AppDriver {
 
 	public static void main(String[] args) {
-		// for checking only
-		Shape[] shapes = {
-				new Cone(3, 5),
-				new Cone(2, 10),
-				new Cone(4, 2)
-		};
 
-		MergeSort.sort(shapes, "volume");
+		// default variable for file name, compare type and sort method
+		String filaName = null;
+		char compareType = '\0';
+		char sortMethod = '\0';
 
-		System.out.println("Sorted by volume: ");
-		for (Shape shape : shapes) {
-			System.out.println(shape + "\tVolume: \t" + shape.calVolume());
+		// read the execution command
+		for (String arg : args)
+		{
+			char flag = Character.toLowerCase((arg.charAt(1)));
+			String value = arg.substring(2).replace("\"", "");
+
+			switch (flag) {
+				case 'f':
+					if (!value.contains(".txt"))	// if .txt is not read by the system, add it
+					{
+						value += ".txt";
+					}
+					filaName = value;				
+					break;
+				case 't':
+					if (value.length() == 1)
+					{
+						compareType = Character.toLowerCase(value.charAt(0));
+					}
+					break;
+				case 's':
+					if (value.length() == 1)
+					{
+						sortMethod = Character.toLowerCase(value.charAt(0));
+					}
+					break;
+				default:
+					System.out.println("Unknown flag: " + flag);
+					break;
+			}
 		}
 
-		MergeSort.sort(shapes, "height");
-
-		System.out.println("Sorted by height: ");
-		for (Shape shape : shapes) {
-			System.out.println(shape + "\tHeight: \t" + shape.getHeight());
+		if (filaName == null || compareType == '\0' || sortMethod == '\0')
+		{
+			System.out.println("Missing required arguments.");
+			System.out.println("Usage: java -jar Sort.jar -f<filename> -t<type> -s<sort>");
+			return;
 		}
 
-		MergeSort.sort(shapes, "base area");
+		// testing only, will remove later after file reader is applied.    
+		System.out.println("File: " + filaName);
+		System.out.println("Compare Type: " + compareType);
+		System.out.println("Sort Method: " + sortMethod);
 
-		System.out.println("Sorted by base area: ");
-		for (Shape shape : shapes) {
-			System.out.println(shape + "\tBase area: \t" + shape.calBaseArea());
+		// translating compare type into the label 
+		String compareTypeLabel = null;
+
+		switch(compareType) {
+			case 'v':
+				compareTypeLabel = "volume";
+				break;
+			case 'h':
+				compareTypeLabel = "height";
+				break;
+			case 'a':
+				compareTypeLabel = "base area";
+				break;
+			default:
+				System.err.println("Compare Type is missing");
+				break;
+		}
+
+		// implement read file in here
+		Shape[] shapes = null;
+
+		// translating sorting method
+		switch (sortMethod) {
+			case 'b':
+				BubbleSort.sort(shapes, compareTypeLabel);
+				break;
+			case 's':
+				SelectionSort.sort(shapes, compareTypeLabel);
+				break;
+			case 'i':
+				InsertionSort.sort(shapes, compareTypeLabel);
+			case 'm':
+				MergeSort.sort(shapes, compareTypeLabel);
+			case 'q':
+				QuickSort.sort(shapes, compareTypeLabel);
+			case 'z':
+				CycleSort.sort(shapes, compareTypeLabel);
+			default:
+				System.err.println("No sorting method is found");
+				break;
 		}
 
 		displayOutput(shapes); // pass whatever your groupmate parsed
