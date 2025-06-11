@@ -1,34 +1,20 @@
 package utilities;
 
 import shapes.Shape;
-import java.util.Comparator;
 
 public class InsertionSort {
-    public static void sort(Shape[] array, Comparator<Shape> comparator) {
-        int n = array.length;
-
-        for (int i = 1; i < n; i++) {
-            Shape key = array[i];
+    public static void sort(Shape[] list, String comparator) {
+        for (int i = 1; i < list.length; i++) {
+            Shape key = list[i];
             int j = i - 1;
 
-            while (j >= 0) {
-                int cmp = (comparator == null)
-                        ? key.compareTo(array[j]) // use height if no comparator is provided
-                        : comparator.compare(key, array[j]);
-
-                if (cmp > 0) {
-                    // Move array[j] to one position ahead
-                    array[j + 1] = array[j];
-                    j--;
-
-                } else {
-                    // Found the correct position for key
-                    break;
-                }
+            // Move elements that are smaller than key
+            while (j >= 0 && list[j].compareTo(key, comparator) < 0) {
+                list[j + 1] = list[j];
+                j--;
             }
 
-            // Place key at its correct position
-            array[j + 1] = key;
+            list[j + 1] = key;
         }
     }
 }
