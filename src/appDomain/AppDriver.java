@@ -76,7 +76,7 @@ public class AppDriver {
 		}
 
 		// implement read file in here
-		Shape[] shapes = null;
+		Shape[] shapes = BasicFileIO.readFile(filaName);
 
 		long startTime = System.currentTimeMillis();
 		// translating sorting method
