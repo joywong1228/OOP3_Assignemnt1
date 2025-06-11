@@ -20,4 +20,9 @@ public class OctagonalPrism extends Prism
     public double calBaseArea() {
         return 2*(1+Math.sqrt(2))*side*side;
     }
+
+    @Override
+    public String toString() {
+        return "OctagonalPrism " + height + " " + side;
+    }
 }

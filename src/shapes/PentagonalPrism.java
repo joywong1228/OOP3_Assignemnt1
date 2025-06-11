@@ -11,13 +11,18 @@ public class PentagonalPrism extends Prism
         return height;
     }
 
-        @Override
+    @Override
     public double calBaseArea() {
-        return side*side*5/4*Math.tan(54/180*Math.PI);
+        return side * side * Math.tan(Math.PI * 54 / 180) * 5 / 4;
     }
 
     @Override
     public double calVolume() {
         return getHeight()*calBaseArea();
+    }
+
+    @Override
+    public String toString() {
+        return "PentagonalPrism " + height + " " + side;
     }
 }
