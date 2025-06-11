@@ -8,18 +8,18 @@ public class SelectionSort {
     {
         for (int i = 0; i < array.length - 1; i++)
         {
-            int min = i;
+            int max = i; // DESCENDING ORDER
             for(int j = i + 1; j < array.length; j++)
             {
-                if (array[min].compareTo(array[j], comparator) > 0)
+                if (array[max].compareTo(array[j], comparator) < 0)
                 {
-                    min = j;
+                    max = j;
                 }
             }
 
             Shape temp = array[i];
-            array[i] = array[min];
-            array[min] = temp;
+            array[i] = array[max];
+            array[max] = temp;
         }
     }
     

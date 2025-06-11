@@ -1,6 +1,4 @@
-============================================================
  Geometric Shape Sorting Application
-============================================================
 
 Created by: Group 4
 For: CPRG Assignment 1 - Complexity and Sorting

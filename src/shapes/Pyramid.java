@@ -5,7 +5,7 @@ public class Pyramid extends Shape
     private double side;
     private double height;
 
-    public Pyramid (double side, double height)
+    public Pyramid (double height, double side)
     {
         this.side = side;
         this.height = height;

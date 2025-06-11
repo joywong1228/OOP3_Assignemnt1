@@ -5,7 +5,7 @@ public class Cylinder extends Shape
     private double radius;
     private double height;
 
-    public Cylinder (double radius, double height)
+    public Cylinder (double height, double radius)
     {
         this.radius = radius;
         this.height = height;

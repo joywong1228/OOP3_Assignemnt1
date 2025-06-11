@@ -43,7 +43,7 @@ public class MergeSort {
 
         while (i < n1 && j < n2)
         {
-            if (L[i].compareTo(R[j],comparator) <= 0)
+            if (L[i].compareTo(R[j],comparator) > 0) // DESCENDING ORDER
             {
                 array[k++] = L[i++];
             }
