@@ -10,6 +10,8 @@ import utilities.CycleSort;
 
 public class AppDriver {
 
+	private static String compareTypeLabel = null;
+
 	public static void main(String[] args) {
 
 		// default variable for file name, compare type and sort method
@@ -17,29 +19,26 @@ public class AppDriver {
 		char compareType = '\0';
 		char sortMethod = '\0';
 
-		// read the execution command
-		for (String arg : args)
+		// read the execution c for (String arg : args)
 		{
 			char flag = Character.toLowerCase((arg.charAt(1)));
 			String value = arg.substring(2).replace("\"", "");
 
 			switch (flag) {
 				case 'f':
-					if (!value.contains(".txt"))	// if .txt is not read by the system, add it
+					if (!value.contains(".txt")) // if .txt is not read by the system, add it
 					{
 						value += ".txt";
 					}
-					filaName = value;				
+					filaName = value;
 					break;
 				case 't':
-					if (value.length() == 1)
-					{
+					if (value.length() == 1) {
 						compareType = Character.toLowerCase(value.charAt(0));
 					}
 					break;
 				case 's':
-					if (value.length() == 1)
-					{
+					if (value.length() == 1) {
 						sortMethod = Character.toLowerCase(value.charAt(0));
 					}
 					break;
@@ -48,25 +47,21 @@ public class AppDriver {
 					break;
 			}
 		}
-
-		if (filaName == null || compareType == '\0' || sortMethod == '\0')
-		{
+		if (filaName == null || compareType == '\0' || sortMethod == '\0') {
 			System.out.println("Missing required arguments.");
 			System.out.println("Usage: java -jar Sort.jar -f<filename> -t<type> -s<sort>");
 			return;
 		}
 
-		// testing only, will remove later after file reader is applied.    
+		// testing only, will remove later after file reader is applied.
 		System.out.println("File: " + filaName);
 		System.out.println("Compare Type: " + compareType);
 		System.out.println("Sort Method: " + sortMethod);
 
 		// translating compare type into the label 
-		String compareTypeLabel = null;
-
 		switch(compareType) {
-			case 'v':
-				compareTypeLabel = "volume";
+
+				comp areTypeLabel = "volume";
 				break;
 			case 'h':
 				compareTypeLabel = "height";
@@ -82,6 +77,7 @@ public class AppDriver {
 		// implement read file in here
 		Shape[] shapes = null;
 
+		long startTime = System.currentTimeMillis();
 		// translating sorting method
 		switch (sortMethod) {
 			case 'b':
@@ -92,17 +88,24 @@ public class AppDriver {
 				break;
 			case 'i':
 				InsertionSort.sort(shapes, compareTypeLabel);
+				break;
 			case 'm':
 				MergeSort.sort(shapes, compareTypeLabel);
+				break;
 			case 'q':
 				QuickSort.sort(shapes, compareTypeLabel);
+				break;
 			case 'z':
 				CycleSort.sort(shapes, compareTypeLabel);
+				break;
 			default:
 				System.err.println("No sorting method is found");
 				break;
 		}
 
+		long endTime = System.currentTimeMillis();
+		long duration = endTime - startTime; // in milliseconds
+		System.out.println("Sorting completed in " + duration + " milliseconds.");
 		displayOutput(shapes); // pass whatever your groupmate parsed
 
 		// TODO Auto-generated method stub
@@ -151,11 +154,11 @@ public class AppDriver {
 	private static double getCompareValue(Shape shape) {
 		switch (compareTypeLabel) {
 			case "Volume":
-				return shape.getVolume();
+				return shape.calVolume();
 			case "Height":
 				return shape.getHeight();
 			default:
-				return shape.getBaseArea();
+				return shape.calBaseArea();
 		}
 	}
 }
