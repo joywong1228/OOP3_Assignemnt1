@@ -10,7 +10,7 @@ public class CycleSort {
 
             // Count all smaller shape on right side of item
             for (int j = i+1; j < list.length; j++) 
-                if (list[j].compareTo(item, comparator) < 0) 
+                if (list[j].compareTo(item, comparator) > 0) 
                     pos++;
 
             // if item is not in correct position
@@ -32,7 +32,7 @@ public class CycleSort {
                     pos = i;
 
                     for (int j = i+1; j < list.length; j++)
-                        if (list[j].compareTo(item, comparator) < 0) 
+                        if (list[j].compareTo(item, comparator) > 0) 
                             pos++;
 
                     while (list[pos].compareTo(item, comparator) == 0) 

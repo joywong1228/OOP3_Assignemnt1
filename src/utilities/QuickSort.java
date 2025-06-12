@@ -22,7 +22,7 @@ public class QuickSort {
         int j = first;
         
         while (j < last) {
-            if (list[j].compareTo(pivot, comparator) <= 0) {
+            if (list[j].compareTo(pivot, comparator) >= 0) {
                 Shape temp = list[j];
                 i++;
                 list[j] = list[i];
