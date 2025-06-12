@@ -155,12 +155,15 @@ public class AppDriver {
 
 	private static double getCompareValue(Shape shape) {
 		switch (compareTypeLabel) {
-			case "Volume":
+			case "volume":
 				return shape.calVolume();
-			case "Height":
+			case "height":
 				return shape.getHeight();
 			default:
 				return shape.calBaseArea();
 		}
 	}
 }
+
+// java -jar Sort.jar -fshapes2.txt -tv -sb
+// java -jar Sort.jar -fshapes3.txt -th -sm
