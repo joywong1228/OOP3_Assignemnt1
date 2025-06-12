@@ -1,0 +1,59 @@
+1. Description
+Cycle Sort is an in-place, non-stable sorting algorithm designed to minimize the number of write operations to the array. Unlike other algorithms that may move elements multiple times, Cycle Sort ensures each element is written only once to its correct position, which is especially useful when write operations are costly (e.g., EEPROM memory). The main idea is to identify “cycles” in the permutation of the array and rotate the elements in each cycle to their correct places.
+
+Cycle Sort works by iterating through the array, and for each position, it counts how many elements are smaller than the current element to determine the correct position for that element. If the element is not in its correct place, it is swapped with the element currently in its target position, and this process repeats until all elements in the cycle are in the right place.
+
+2. Pseudocode
+for cycle_start from 0 to n-2:
+    item = array[cycle_start]
+    pos = cycle_start
+
+    # Find the correct position for item
+    for i from cycle_start + 1 to n-1:
+        if array[i] < item:
+            pos = pos + 1
+
+    # If the item is already in the correct position, skip
+    if pos == cycle_start:
+        continue
+
+    # Skip duplicates
+    while item == array[pos]:
+        pos = pos + 1
+
+    # Place the item in its correct position
+    if pos != cycle_start:
+        swap item with array[pos]
+
+    # Rotate the rest of the cycle
+    while pos != cycle_start:
+        pos = cycle_start
+        for i from cycle_start + 1 to n-1:
+            if array[i] < item:
+                pos = pos + 1
+
+        while item == array[pos]:
+            pos = pos + 1
+
+        if item != array[pos]:
+            swap item with array[pos]
+
+3. Counting Analysis
+Outer loop: Runs (n - 1) times (for each element except the last).
+
+First inner loop: For each cycle, compares the current element with every other element to find its correct position (up to n-1 comparisons).
+
+Total comparisons: In the worst case, roughly O(n²) comparisons (just like Selection Sort).
+
+Swaps (writes): Exactly as many as there are cycles in the permutation — minimum possible for any sorting algorithm (in the best case, O(n) writes).
+
+Additional comparisons: Handling duplicates can require extra steps for each cycle.
+
+Summary:
+
+Comparisons: O(n²)
+
+Writes: O(n) (minimal among all sorting algorithms)
+
+4. Why We Chose Cycle Sort
+We selected Cycle Sort because it is unique in minimizing the number of writes, which can be important when writes are expensive. While it is not practical for everyday use compared to faster algorithms like Quick Sort or Merge Sort, Cycle Sort is optimal when the main concern is to reduce the number of times elements are moved.
