@@ -18,6 +18,7 @@ public class AppDriver {
 		String filaName = null;
 		char compareType = '\0';
 		char sortMethod = '\0';
+		String sortMethodName = "";
 
 		// read the execution c
 		for (String arg : args) {
@@ -82,31 +83,38 @@ public class AppDriver {
 		switch (sortMethod) {
 			case 'b':
 				BubbleSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Bubble Sort";
 				break;
 			case 's':
 				SelectionSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Selection Sort";
 				break;
 			case 'i':
 				InsertionSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Insertion Sort";
 				break;
 			case 'm':
 				MergeSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Merge Sort";
 				break;
 			case 'q':
 				QuickSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Quick Sort";
 				break;
 			case 'z':
 				CycleSort.sort(shapes, compareTypeLabel);
+				sortMethodName = "Custom Sort Algorithm (Cycle Sort)";
 				break;
 			default:
 				System.err.println("No sorting method is found");
+				sortMethodName = "Unknown Sort Method";
 				break;
 		}
 
 		long endTime = System.currentTimeMillis();
 		long duration = endTime - startTime; // in milliseconds
-		System.out.println("Sorting completed in " + duration + " milliseconds.");
 		displayOutput(shapes); // pass whatever your groupmate parsed
+		System.out.println(sortMethodName + " run time was: " + duration + " milliseconds.");
 
 		// TODO Auto-generated method stub
 
